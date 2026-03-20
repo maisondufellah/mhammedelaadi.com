@@ -622,12 +622,12 @@ section { padding: 140px 40px; }
 
 @media (max-width: 900px) {
   .commission-steps { grid-template-columns: repeat(2, 1fr); }
-  .concepts-grid { grid-template-columns: 1fr 1fr; }
+  .concepts-grid { grid-template-columns: 1fr 1fr !important; }
   .commission-form-section { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 650px) {
   .commission-steps { grid-template-columns: 1fr; }
-  .concepts-grid { grid-template-columns: 1fr; }
+  .concepts-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ====== PARCOURS / TIMELINE ====== */
@@ -1279,41 +1279,69 @@ section { padding: 140px 40px; }
         <span class="en">Conceptual illustrations — each commission is unique and personalized</span>
         <span class="ar">رسوم توضيحية مفاهيمية — كل طلب فريد ومخصص</span>
       </p>
-      <div class="concepts-grid">
+      <div class="concepts-grid" style="grid-template-columns:repeat(4,1fr);">
         <div class="concept-card reveal">
-          <div class="concept-placeholder">
-            <div class="concept-placeholder-icon">&#9881;</div>
-            <div class="concept-placeholder-text">
-              <span class="fr">Sculpture d'int&eacute;rieur</span><span class="en">Indoor Sculpture</span><span class="ar">منحوتة داخلية</span>
-            </div>
-          </div>
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-bureau-marbre.webp" alt="Concept — Sculpture bureau marbre" loading="lazy">
           <div class="concept-card-info">
-            <h4><span class="fr">Sculpture d'int&eacute;rieur</span><span class="en">Indoor Sculpture</span><span class="ar">منحوتة داخلية</span></h4>
-            <p><span class="fr">Bois ou Marbre &bull; 40-80cm</span><span class="en">Wood or Marble &bull; 40-80cm</span><span class="ar">خشب أو رخام &bull; 40-80سم</span></p>
+            <h4><span class="fr">Sculpture de Bureau</span><span class="en">Office Sculpture</span><span class="ar">منحوتة مكتب</span></h4>
+            <p><span class="fr">Marbre blanc &bull; 50cm</span><span class="en">White Marble &bull; 50cm</span><span class="ar">رخام أبيض &bull; 50سم</span></p>
           </div>
         </div>
         <div class="concept-card reveal reveal-delay-1">
-          <div class="concept-placeholder">
-            <div class="concept-placeholder-icon">&#127961;</div>
-            <div class="concept-placeholder-text">
-              <span class="fr">Sculpture monumentale</span><span class="en">Monumental Sculpture</span><span class="ar">منحوتة ضخمة</span>
-            </div>
-          </div>
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-lobby-bronze.webp" alt="Concept — Sculpture lobby bronze" loading="lazy">
           <div class="concept-card-info">
-            <h4><span class="fr">Sculpture monumentale</span><span class="en">Monumental Sculpture</span><span class="ar">منحوتة ضخمة</span></h4>
-            <p><span class="fr">Pierre ou Bronze &bull; 1-5m</span><span class="en">Stone or Bronze &bull; 1-5m</span><span class="ar">حجر أو برونز &bull; 1-5م</span></p>
+            <h4><span class="fr">Lobby H&ocirc;tel</span><span class="en">Hotel Lobby</span><span class="ar">بهو فندق</span></h4>
+            <p><span class="fr">Bronze &amp; Pierre &bull; 150cm</span><span class="en">Bronze &amp; Stone &bull; 150cm</span><span class="ar">برونز وحجر &bull; 150سم</span></p>
           </div>
         </div>
         <div class="concept-card reveal reveal-delay-2">
-          <div class="concept-placeholder">
-            <div class="concept-placeholder-icon">&#127912;</div>
-            <div class="concept-placeholder-text">
-              <span class="fr">&OElig;uvre de collection</span><span class="en">Collector Piece</span><span class="ar">قطعة جمع</span>
-            </div>
-          </div>
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-fontaine-riad.webp" alt="Concept — Fontaine riad marbre" loading="lazy">
           <div class="concept-card-info">
-            <h4><span class="fr">&OElig;uvre de collection</span><span class="en">Collector Piece</span><span class="ar">قطعة جمع</span></h4>
-            <p><span class="fr">Mixte &bull; &Eacute;dition limit&eacute;e</span><span class="en">Mixed Media &bull; Limited Edition</span><span class="ar">مواد مختلطة &bull; إصدار محدود</span></p>
+            <h4><span class="fr">Fontaine Riad</span><span class="en">Riad Fountain</span><span class="ar">نافورة رياض</span></h4>
+            <p><span class="fr">Marbre &bull; 90cm</span><span class="en">Marble &bull; 90cm</span><span class="ar">رخام &bull; 90سم</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal reveal-delay-3">
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-murale-bois.webp" alt="Concept — Sculpture murale bois" loading="lazy">
+          <div class="concept-card-info">
+            <h4><span class="fr">Sculpture Murale</span><span class="en">Wall Sculpture</span><span class="ar">منحوتة جدارية</span></h4>
+            <p><span class="fr">Bois &bull; 80x40cm</span><span class="en">Wood &bull; 80x40cm</span><span class="ar">خشب &bull; 80x40سم</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal">
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-zen-pierre.webp" alt="Concept — Sculpture zen pierre noire" loading="lazy">
+          <div class="concept-card-info">
+            <h4><span class="fr">M&eacute;ditation / Zen</span><span class="en">Meditation / Zen</span><span class="ar">تأمل / زِن</span></h4>
+            <p><span class="fr">Pierre noire &bull; 45cm</span><span class="en">Black Stone &bull; 45cm</span><span class="ar">حجر أسود &bull; 45سم</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal reveal-delay-1">
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-maternite-bronze.webp" alt="Concept — Maternité bronze doré" loading="lazy">
+          <div class="concept-card-info">
+            <h4><span class="fr">Maternit&eacute;</span><span class="en">Motherhood</span><span class="ar">أمومة</span></h4>
+            <p><span class="fr">Bronze dor&eacute; &bull; 55cm</span><span class="en">Golden Bronze &bull; 55cm</span><span class="ar">برونز ذهبي &bull; 55سم</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal reveal-delay-2">
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-totem-africain.webp" alt="Concept — Totem africain moderne" loading="lazy">
+          <div class="concept-card-info">
+            <h4><span class="fr">Totem Contemporain</span><span class="en">Contemporary Totem</span><span class="ar">طوطم معاصر</span></h4>
+            <p><span class="fr">Bois &amp; Bronze &bull; 130cm</span><span class="en">Wood &amp; Bronze &bull; 130cm</span><span class="ar">خشب وبرونز &bull; 130سم</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal reveal-delay-3">
+          <span class="concept-badge"><span class="fr">Concept</span><span class="en">Concept</span><span class="ar">مفهوم</span></span>
+          <img src="concept-sculpture-monumentale-ville.webp" alt="Concept — Sculpture monumentale rond-point" loading="lazy">
+          <div class="concept-card-info">
+            <h4><span class="fr">Monumentale Urbaine</span><span class="en">Urban Monumental</span><span class="ar">ضخمة حضرية</span></h4>
+            <p><span class="fr">Pierre &bull; 3-5m</span><span class="en">Stone &bull; 3-5m</span><span class="ar">حجر &bull; 3-5م</span></p>
           </div>
         </div>
       </div>
