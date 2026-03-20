@@ -13,7 +13,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="M'hammed El Aadi — Sculpteur Marocain">
 <meta property="og:description" content="Plus de 35 ans de création entre bois, métal, pierre et marbre. Sculptures entre racines et modernité.">
-<meta property="og:image" content="sculpture-ambition-bronze-elaadi.png">
+<meta property="og:url" content="https://mhammedelaadi.com/">
+<meta property="og:image" content="https://mhammedelaadi.com/sculpture-ambition-bronze-elaadi.webp">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="2400">
 <meta property="og:locale" content="fr_MA">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="ar_MA">
@@ -22,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="M'hammed El Aadi — Sculpteur Marocain">
 <meta name="twitter:description" content="Plus de 35 ans de création entre bois, métal, pierre et marbre.">
-<meta name="twitter:image" content="sculpture-ambition-bronze-elaadi.png">
+<meta name="twitter:image" content="https://mhammedelaadi.com/sculpture-ambition-bronze-elaadi.webp">
 
 <!-- Structured Data / JSON-LD -->
 <script type="application/ld+json">
@@ -43,6 +46,8 @@
 }
 </script>
 
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://mhammedelaadi.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
 
@@ -812,6 +817,30 @@ section { padding: 140px 40px; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
+/* ====== WHATSAPP FLOATING BUTTON ====== */
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 800;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; border: none;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  cursor: none; transition: var(--transition);
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+}
+.whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+.whatsapp-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--bg-card); color: var(--white); padding: 8px 16px;
+  border-radius: 8px; font-size: 0.78rem; white-space: nowrap;
+  border: 1px solid rgba(201,169,110,0.15);
+  opacity: 0; pointer-events: none; transition: var(--transition);
+}
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
 /* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
   section { padding: 90px 24px; }
@@ -919,7 +948,7 @@ section { padding: 140px 40px; }
   <div class="about-grid">
     <div class="about-image reveal">
       <div class="about-portraits">
-        <img src="portrait-formal.jpg" alt="M'hammed El Aadi — Portrait" loading="lazy">
+        <img src="portrait-formal.webp" alt="M'hammed El Aadi — Portrait" loading="lazy">
       </div>
     </div>
     <div class="about-text reveal reveal-delay-1">
@@ -950,7 +979,7 @@ section { padding: 140px 40px; }
       <div class="gold-line"></div>
     </div>
     <div class="reveal" style="text-align:center;margin-bottom:40px;">
-      <img src="portrait-atelier.jpg" alt="M'hammed El Aadi — En plein air" loading="lazy" style="max-width:500px;width:100%;border-radius:6px;border:1px solid rgba(201,169,110,0.15);">
+      <img src="portrait-atelier.webp" alt="M'hammed El Aadi — En plein air" loading="lazy" style="max-width:500px;width:100%;border-radius:6px;border:1px solid rgba(201,169,110,0.15);">
     </div>
     <blockquote class="artist-quote reveal" style="border-left:2px solid var(--gold);padding-left:28px;margin:0;">
       <p class="fr" style="font-family:var(--font-display);font-size:1.25rem;font-style:italic;color:var(--white);line-height:2;margin-bottom:20px;">&laquo; Depuis mon enfance &agrave; Ouled Frej pr&egrave;s d'El Jadida, mes mains ont cherch&eacute; la forme dans l'argile, le bois et la pierre. Cette qu&ecirc;te ne s'est pas arr&ecirc;t&eacute;e depuis 35 ans. Je suis un artiste autodidacte qui a choisi la sculpture parce qu'elle est le seul langage capable d'embrasser tout ce que je ne peux mettre en mots. &raquo;</p>
@@ -1036,7 +1065,7 @@ section { padding: 140px 40px; }
     <div class="masonry-grid" id="galleryGrid">
       <!-- 1. Ambition — Bronze & Pierre -->
       <div class="gallery-item reveal" data-category="mixte" onclick="openLightbox(this)">
-        <img src="sculpture-ambition-bronze-elaadi.png" alt="Ambition — M'hammed El Aadi" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-ambition-bronze-elaadi.webp" alt="Ambition — M'hammed El Aadi" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Ambition</span><span class="en">Ambition</span><span class="ar">طموح</span></h3>
@@ -1046,7 +1075,7 @@ section { padding: 140px 40px; }
 
       <!-- 2. Torsion — Bois -->
       <div class="gallery-item reveal" data-category="bois" onclick="openLightbox(this)">
-        <img src="sculpture-torsion-bois.png" alt="Torsion — Bois" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-torsion-bois.webp" alt="Torsion — Bois" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Torsion</span><span class="en">Torsion</span><span class="ar">التواء</span></h3>
@@ -1056,7 +1085,7 @@ section { padding: 140px 40px; }
 
       <!-- 3. Couronne — Bronze -->
       <div class="gallery-item reveal" data-category="metal" onclick="openLightbox(this)">
-        <img src="sculpture-couronne-bronze-parc.png" alt="Couronne — Bronze" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-couronne-bronze-parc.webp" alt="Couronne — Bronze" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Couronne</span><span class="en">Crown</span><span class="ar">إكليل</span></h3>
@@ -1066,7 +1095,7 @@ section { padding: 140px 40px; }
 
       <!-- 4. Envol — Marbre blanc -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-envol-marbre-blanc.png" alt="Envol — Marbre blanc" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-envol-marbre-blanc.webp" alt="Envol — Marbre blanc" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Envol</span><span class="en">Flight</span><span class="ar">تحليق</span></h3>
@@ -1076,7 +1105,7 @@ section { padding: 140px 40px; }
 
       <!-- 5. Visage & Mouvement — Marbre gris -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-visage-mouvement-marbre.png" alt="Visage et Mouvement — Marbre" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-visage-mouvement-marbre.webp" alt="Visage et Mouvement — Marbre" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Visage &amp; Mouvement</span><span class="en">Face &amp; Movement</span><span class="ar">وجه وحركة</span></h3>
@@ -1086,7 +1115,7 @@ section { padding: 140px 40px; }
 
       <!-- 6. Sculpture monumentale — Pierre, Dubai -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-monumentale-dubai.png" alt="Sculpture monumentale — Dubai" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-monumentale-dubai.webp" alt="Sculpture monumentale — Dubai" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Monumentale</span><span class="en">Monumental</span><span class="ar">ضخامة</span></h3>
@@ -1096,7 +1125,7 @@ section { padding: 140px 40px; }
 
       <!-- 7. Spirale — Marbre rose -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-spirale-marbre-rose.png" alt="Spirale — Marbre rose" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-spirale-marbre-rose.webp" alt="Spirale — Marbre rose" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Spirale</span><span class="en">Spiral</span><span class="ar">لولب</span></h3>
@@ -1106,7 +1135,7 @@ section { padding: 140px 40px; }
 
       <!-- 8. Equilibrium — Marbre beige -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-equilibrium-marbre-beige.png" alt="Equilibrium — Marbre beige" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-equilibrium-marbre-beige.webp" alt="Equilibrium — Marbre beige" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Equilibrium</span><span class="en">Equilibrium</span><span class="ar">توازن</span></h3>
@@ -1116,11 +1145,81 @@ section { padding: 140px 40px; }
 
       <!-- 9. Vague — Pierre monumentale, parc -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-vague-pierre-monumentale.png" alt="Vague — Pierre" loading="lazy" style="width:100%;display:block;">
+        <img src="sculpture-vague-pierre-monumentale.webp" alt="Vague — Pierre" loading="lazy" style="width:100%;display:block;">
         <div class="gallery-item-overlay">
           <div class="view-icon">+</div>
           <h3><span class="fr">Vague</span><span class="en">Wave</span><span class="ar">موجة</span></h3>
           <p class="meta"><span class="fr">Pierre &bull; 2014</span><span class="en">Stone &bull; 2014</span><span class="ar">حجر &bull; 2014</span></p>
+        </div>
+      </div>
+
+      <!-- 10. Ambition — Vue exposition -->
+      <div class="gallery-item reveal" data-category="mixte" onclick="openLightbox(this)">
+        <img src="sculpture-ambition-bronze-exposition.webp" alt="Ambition — Vue exposition" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Ambition &mdash; Exposition</span><span class="en">Ambition &mdash; Exhibition</span><span class="ar">طموح &mdash; معرض</span></h3>
+          <p class="meta"><span class="fr">Bronze &amp; Pierre &bull; Vue d'ensemble</span><span class="en">Bronze &amp; Stone &bull; Full view</span><span class="ar">برونز وحجر &bull; منظر شامل</span></p>
+        </div>
+      </div>
+
+      <!-- 11. Torsion — Détail bois -->
+      <div class="gallery-item reveal" data-category="bois" onclick="openLightbox(this)">
+        <img src="sculpture-torsion-bois-detail.webp" alt="Torsion — Détail bois" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Torsion &mdash; D&eacute;tail</span><span class="en">Torsion &mdash; Detail</span><span class="ar">التواء &mdash; تفصيل</span></h3>
+          <p class="meta"><span class="fr">Bois &bull; Gros plan</span><span class="en">Wood &bull; Close-up</span><span class="ar">خشب &bull; عن قرب</span></p>
+        </div>
+      </div>
+
+      <!-- 12. Couronne — Détail bronze -->
+      <div class="gallery-item reveal" data-category="metal" onclick="openLightbox(this)">
+        <img src="sculpture-couronne-bronze-detail.webp" alt="Couronne — Détail bronze" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Couronne &mdash; D&eacute;tail</span><span class="en">Crown &mdash; Detail</span><span class="ar">إكليل &mdash; تفصيل</span></h3>
+          <p class="meta"><span class="fr">Bronze &bull; Patine verte</span><span class="en">Bronze &bull; Green patina</span><span class="ar">برونز &bull; زنجار أخضر</span></p>
+        </div>
+      </div>
+
+      <!-- 13. Monumentale — Dubai angle -->
+      <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
+        <img src="sculpture-monumentale-dubai-angle.webp" alt="Monumentale — Dubai angle" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Monumentale &mdash; Duba&iuml;</span><span class="en">Monumental &mdash; Dubai</span><span class="ar">ضخامة &mdash; دبي</span></h3>
+          <p class="meta"><span class="fr">Pierre &bull; Installation publique</span><span class="en">Stone &bull; Public installation</span><span class="ar">حجر &bull; تنصيب عام</span></p>
+        </div>
+      </div>
+
+      <!-- 14. Spirale — Détail marbre rose -->
+      <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
+        <img src="sculpture-spirale-marbre-rose-detail.webp" alt="Spirale — Détail marbre rose" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Spirale &mdash; D&eacute;tail</span><span class="en">Spiral &mdash; Detail</span><span class="ar">لولب &mdash; تفصيل</span></h3>
+          <p class="meta"><span class="fr">Marbre rose &bull; Zellige</span><span class="en">Rose Marble &bull; Zellige</span><span class="ar">رخام وردي &bull; زليج</span></p>
+        </div>
+      </div>
+
+      <!-- 15. Vague — Autre angle -->
+      <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
+        <img src="sculpture-vague-pierre-angle.webp" alt="Vague — Pierre angle" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Vague &mdash; Profil</span><span class="en">Wave &mdash; Profile</span><span class="ar">موجة &mdash; جانبي</span></h3>
+          <p class="meta"><span class="fr">Pierre &bull; Vue lat&eacute;rale</span><span class="en">Stone &bull; Side view</span><span class="ar">حجر &bull; منظر جانبي</span></p>
+        </div>
+      </div>
+
+      <!-- 16. Equilibrium — Autre angle -->
+      <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
+        <img src="sculpture-equilibrium-marbre-angle.webp" alt="Equilibrium — Marbre angle" loading="lazy" style="width:100%;display:block;">
+        <div class="gallery-item-overlay">
+          <div class="view-icon">+</div>
+          <h3><span class="fr">Equilibrium &mdash; Profil</span><span class="en">Equilibrium &mdash; Profile</span><span class="ar">توازن &mdash; جانبي</span></h3>
+          <p class="meta"><span class="fr">Marbre &bull; Exposition</span><span class="en">Marble &bull; Exhibition</span><span class="ar">رخام &bull; معرض</span></p>
         </div>
       </div>
     </div>
@@ -1381,6 +1480,16 @@ section { padding: 140px 40px; }
     <p><span class="fr">El Jadida, Maroc</span><span class="en">El Jadida, Morocco</span><span class="ar">الجديدة، المغرب</span></p>
   </div>
 </footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/212663671012?text=Bonjour%20M.%20El%20Aadi%2C%20je%20vous%20contacte%20depuis%20votre%20site%20web." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="whatsapp-tooltip">
+    <span class="fr">Contactez-nous sur WhatsApp</span>
+    <span class="en">Contact us on WhatsApp</span>
+    <span class="ar">تواصل معنا عبر واتساب</span>
+  </span>
+</a>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
