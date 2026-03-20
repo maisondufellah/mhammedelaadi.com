@@ -143,7 +143,8 @@ a, button, input, textarea, select, .gallery-item, .filter-btn { cursor: none; }
 [data-lang="ar"] .hero-content,
 [data-lang="ar"] .hero-overline,
 [data-lang="ar"] .hero-desc,
-[data-lang="ar"] .hero h1 { text-align: center; }
+[data-lang="ar"] .hero h1 { text-align: right; }
+[data-lang="ar"] .hero-inner { direction: rtl; }
 [data-lang="ar"] .nav-links { direction: rtl; }
 [data-lang="ar"] .timeline { padding-left: 0; padding-right: 40px; }
 [data-lang="ar"] .timeline::before { left: auto; right: 0; }
@@ -231,8 +232,8 @@ a, button, input, textarea, select, .gallery-item, .filter-btn { cursor: none; }
 
 /* ====== HERO with Parallax ====== */
 .hero {
-  height: 100vh; display: flex; align-items: center; justify-content: center;
-  text-align: center; position: relative; overflow: hidden;
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -242,8 +243,21 @@ a, button, input, textarea, select, .gallery-item, .filter-btn { cursor: none; }
     radial-gradient(circle at 50% 80%, rgba(201,169,110,0.04) 0%, transparent 40%);
   will-change: transform;
 }
+.hero-inner {
+  position: relative; z-index: 2; max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  padding: 120px 40px 80px;
+}
 .hero-content {
-  position: relative; z-index: 2; max-width: 800px; padding: 0 30px;
+  text-align: left;
+}
+.hero-portrait {
+  display: flex; justify-content: center;
+}
+.hero-portrait img {
+  width: 100%; max-width: 420px; aspect-ratio: 3/4; object-fit: cover; object-position: center top;
+  border-radius: 6px; border: 1px solid rgba(201,169,110,0.15);
+  opacity: 0; animation: fadeUp 1s ease 1.2s forwards;
 }
 .hero-overline {
   font-size: 0.7rem; font-weight: 500; letter-spacing: 6px; text-transform: uppercase;
@@ -330,9 +344,9 @@ section { padding: 140px 40px; }
   transition: var(--transition);
 }
 .about-portraits img:first-child {
-  aspect-ratio: 1/1; object-position: center top;
+  aspect-ratio: 3/4; object-position: center top;
 }
-.about-portraits img:last-child {
+.about-portraits img:last-child:not(:first-child) {
   aspect-ratio: 4/3; object-position: center;
 }
 .about-portraits img:hover {
@@ -406,51 +420,51 @@ section { padding: 140px 40px; }
 }
 
 .masonry-grid {
-  columns: 3;
-  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .gallery-item {
-  break-inside: avoid;
-  margin-bottom: 20px;
   position: relative;
   overflow: hidden;
   cursor: none;
-  border: 1px solid rgba(201,169,110,0.06);
+  border: 1px solid rgba(201,169,110,0.08);
   transition: var(--transition);
 }
 .gallery-item:hover {
   border-color: rgba(201,169,110,0.25);
 }
 
+.gallery-item-img-wrap {
+  position: relative; overflow: hidden;
+}
+
 .gallery-item img {
-  width: 100%; display: block; transition: transform 0.6s ease;
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; transition: transform 0.6s ease;
 }
 .gallery-item:hover img { transform: scale(1.03); }
 
-/* Hover overlay */
+.gallery-item-info {
+  padding: 18px; background: var(--bg-elevated);
+}
+.gallery-item-info h3 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 400;
+  color: var(--white); margin-bottom: 4px;
+}
+[data-lang="ar"] .gallery-item-info h3 { font-family: var(--font-arabic); font-size: 0.95rem; }
+.gallery-item-info .meta {
+  font-size: 0.72rem; color: var(--gold); letter-spacing: 1px;
+}
+
+/* Hover overlay — covers only image area */
 .gallery-item-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(12,12,12,0.95) 0%, rgba(12,12,12,0.4) 40%, transparent 100%);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 28px; opacity: 0; transition: var(--transition);
+  background: rgba(12,12,12,0.5);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: var(--transition);
 }
 .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-
-.gallery-item-overlay h3 {
-  font-family: var(--font-display); font-size: 1.3rem; font-weight: 400;
-  color: var(--white); margin-bottom: 6px;
-  transform: translateY(10px); transition: var(--transition);
-}
-.gallery-item:hover .gallery-item-overlay h3 { transform: translateY(0); }
-
-[data-lang="ar"] .gallery-item-overlay h3 { font-family: var(--font-arabic); font-size: 1.15rem; }
-
-.gallery-item-overlay .meta {
-  font-size: 0.75rem; color: var(--gold); letter-spacing: 1px;
-  transform: translateY(10px); transition: transform 0.4s ease 0.05s;
-}
-.gallery-item:hover .gallery-item-overlay .meta { transform: translateY(0); }
 
 .gallery-item-overlay .dimensions {
   font-size: 0.7rem; color: var(--white-dim); margin-top: 4px; opacity: 0.7;
@@ -842,16 +856,36 @@ section { padding: 140px 40px; }
 .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
 
 /* ====== RESPONSIVE ====== */
+@media (max-width: 1100px) {
+  .hero-inner { grid-template-columns: 1fr 1fr; gap: 40px; padding: 120px 30px 80px; }
+  .masonry-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 900px) {
-  section { padding: 90px 24px; }
+  section { padding: 70px 20px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 30px; text-align: center; padding: 100px 20px 50px; }
+  .hero-content { text-align: center; }
+  .hero-portrait { order: -1; }
+  .hero-portrait img { max-width: 260px; aspect-ratio: 3/4; }
+  .hero-desc { margin: 0 auto 30px; }
+  [data-lang="ar"] .hero-content, [data-lang="ar"] .hero h1 { text-align: center; }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); }
+  .hero h1 .subtitle-line { font-size: 0.5em; }
+  .hero-overline { font-size: 0.6rem; letter-spacing: 4px; margin-bottom: 18px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .masonry-grid { columns: 2; }
-  .contact-container { grid-template-columns: 1fr; gap: 50px; }
+  .about-portraits img:first-child { aspect-ratio: 4/3; }
+  .masonry-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .gallery-item-info { padding: 12px 14px; }
+  .gallery-item-info h3 { font-size: 0.9rem; }
+  .gallery-item-info .meta { font-size: 0.65rem; }
+  .contact-container { grid-template-columns: 1fr; gap: 40px; }
   .process-steps { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .section-title { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+  .statement-content { padding: 0 10px; }
 }
 @media (max-width: 650px) {
+  section { padding: 50px 16px; }
   .nav-links { display: none; }
   .menu-btn { display: flex; }
   .nav-links.open {
@@ -859,11 +893,30 @@ section { padding: 140px 40px; }
     flex-direction: column; align-items: center; justify-content: center; gap: 30px; z-index: 950;
   }
   .nav-links.open a { font-size: 1rem; letter-spacing: 4px; }
-  .masonry-grid { columns: 1; }
+  .hero-inner { padding: 90px 16px 40px; gap: 24px; }
+  .hero-portrait img { max-width: 220px; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-desc { font-size: 0.85rem; }
+  .masonry-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gallery-item-info { padding: 10px 12px; }
+  .gallery-item-info h3 { font-size: 0.82rem; }
+  .gallery-item-info .meta { font-size: 0.6rem; letter-spacing: 0.5px; }
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat-item h3 { font-size: 1.8rem; }
   .lang-toggle button { padding: 6px 10px; font-size: 10px; }
-  .hero h1 { font-size: 2.5rem; }
   .process-steps { grid-template-columns: 1fr; }
+  .contact-form input, .contact-form textarea { font-size: 0.85rem; padding: 12px 0; margin-bottom: 18px; }
+  .contact-form button { width: 100%; padding: 14px; }
+  .footer { padding: 50px 16px 30px; }
+}
+@media (max-width: 400px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero-portrait img { max-width: 180px; }
+  .masonry-grid { grid-template-columns: 1fr; gap: 16px; }
+  .gallery-item-info { padding: 14px 16px; }
+  .gallery-item-info h3 { font-size: 0.95rem; }
+  .about-stats { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .stat-item h3 { font-size: 1.5rem; }
 }
 </style>
 </head>
@@ -911,34 +964,39 @@ section { padding: 140px 40px; }
   <div class="hero-deco hero-deco-1"></div>
   <div class="hero-deco hero-deco-2"></div>
   <div class="hero-deco hero-deco-3"></div>
-  <div class="hero-content">
-    <p class="hero-overline">
-      <span class="fr">Sculpteur Marocain</span>
-      <span class="en">Moroccan Sculptor</span>
-      <span class="ar">نحّات مغربي</span>
-    </p>
-    <h1>
-      <span class="fr">M'hammed El Aadi</span>
-      <span class="en">M'hammed El Aadi</span>
-      <span class="ar">محمد العادي</span>
-      <span class="subtitle-line">
-        <span class="fr">La mati&egrave;re comme m&eacute;moire</span>
-        <span class="en">Matter as Memory</span>
-        <span class="ar">المادّة كذاكرة</span>
-      </span>
-    </h1>
-    <p class="hero-desc">
-      <span class="fr">Sculpteur n&eacute; en 1959 &agrave; El Jadida. Plus de 35 ans de cr&eacute;ation entre bois, m&eacute;tal, pierre et marbre &mdash; une qu&ecirc;te de l'&eacute;quilibre entre racines et modernit&eacute;.</span>
-      <span class="en">Sculptor born in 1959 in El Jadida, Morocco. Over 35 years of creation in wood, metal, stone and marble &mdash; a quest for balance between roots and modernity.</span>
-      <span class="ar">نحّات من مواليد 1959 بالجديدة، المغرب. أكثر من 35 سنة من الإبداع بين الخشب والمعدن والحجر والرخام &mdash; بحث دائم عن التوازن بين الجذور والحداثة.</span>
-    </p>
-    <div class="hero-scroll">
-      <a href="#about">
-        <span class="fr">D&eacute;couvrir</span>
-        <span class="en">Discover</span>
-        <span class="ar">اكتشف</span>
-        <span class="arrow">&darr;</span>
-      </a>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-overline">
+        <span class="fr">Sculpteur Marocain</span>
+        <span class="en">Moroccan Sculptor</span>
+        <span class="ar">نحّات مغربي</span>
+      </p>
+      <h1>
+        <span class="fr">M'hammed El Aadi</span>
+        <span class="en">M'hammed El Aadi</span>
+        <span class="ar">محمد العادي</span>
+        <span class="subtitle-line">
+          <span class="fr">La mati&egrave;re comme m&eacute;moire</span>
+          <span class="en">Matter as Memory</span>
+          <span class="ar">المادّة كذاكرة</span>
+        </span>
+      </h1>
+      <p class="hero-desc">
+        <span class="fr">Sculpteur n&eacute; en 1959 &agrave; El Jadida. Plus de 35 ans de cr&eacute;ation entre bois, m&eacute;tal, pierre et marbre &mdash; une qu&ecirc;te de l'&eacute;quilibre entre racines et modernit&eacute;.</span>
+        <span class="en">Sculptor born in 1959 in El Jadida, Morocco. Over 35 years of creation in wood, metal, stone and marble &mdash; a quest for balance between roots and modernity.</span>
+        <span class="ar">نحّات من مواليد 1959 بالجديدة، المغرب. أكثر من 35 سنة من الإبداع بين الخشب والمعدن والحجر والرخام &mdash; بحث دائم عن التوازن بين الجذور والحداثة.</span>
+      </p>
+      <div class="hero-scroll">
+        <a href="#about">
+          <span class="fr">D&eacute;couvrir</span>
+          <span class="en">Discover</span>
+          <span class="ar">اكتشف</span>
+          <span class="arrow">&darr;</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="portrait-formal.webp" alt="M'hammed El Aadi — Sculpteur Marocain">
     </div>
   </div>
 </section>
@@ -948,7 +1006,7 @@ section { padding: 140px 40px; }
   <div class="about-grid">
     <div class="about-image reveal">
       <div class="about-portraits">
-        <img src="portrait-formal.webp" alt="M'hammed El Aadi — Portrait" loading="lazy">
+        <img src="portrait-atelier.webp" alt="M'hammed El Aadi — En atelier" loading="lazy">
       </div>
     </div>
     <div class="about-text reveal reveal-delay-1">
@@ -1065,9 +1123,11 @@ section { padding: 140px 40px; }
     <div class="masonry-grid" id="galleryGrid">
       <!-- 1. Ambition — Bronze & Pierre -->
       <div class="gallery-item reveal" data-category="mixte" onclick="openLightbox(this)">
-        <img src="sculpture-ambition-bronze-elaadi.webp" alt="Ambition — M'hammed El Aadi" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-ambition-bronze-elaadi.webp" alt="Ambition — M'hammed El Aadi" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Ambition</span><span class="en">Ambition</span><span class="ar">طموح</span></h3>
           <p class="meta"><span class="fr">Bronze &amp; Pierre &bull; 2018</span><span class="en">Bronze &amp; Stone &bull; 2018</span><span class="ar">برونز وحجر &bull; 2018</span></p>
         </div>
@@ -1075,9 +1135,11 @@ section { padding: 140px 40px; }
 
       <!-- 2. Torsion — Bois -->
       <div class="gallery-item reveal" data-category="bois" onclick="openLightbox(this)">
-        <img src="sculpture-torsion-bois.webp" alt="Torsion — Bois" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-torsion-bois.webp" alt="Torsion — Bois" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Torsion</span><span class="en">Torsion</span><span class="ar">التواء</span></h3>
           <p class="meta"><span class="fr">Bois &bull; 2015</span><span class="en">Wood &bull; 2015</span><span class="ar">خشب &bull; 2015</span></p>
         </div>
@@ -1085,9 +1147,11 @@ section { padding: 140px 40px; }
 
       <!-- 3. Couronne — Bronze -->
       <div class="gallery-item reveal" data-category="metal" onclick="openLightbox(this)">
-        <img src="sculpture-couronne-bronze-parc.webp" alt="Couronne — Bronze" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-couronne-bronze-parc.webp" alt="Couronne — Bronze" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Couronne</span><span class="en">Crown</span><span class="ar">إكليل</span></h3>
           <p class="meta"><span class="fr">Bronze &bull; 2016</span><span class="en">Bronze &bull; 2016</span><span class="ar">برونز &bull; 2016</span></p>
         </div>
@@ -1095,9 +1159,11 @@ section { padding: 140px 40px; }
 
       <!-- 4. Envol — Marbre blanc -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-envol-marbre-blanc.webp" alt="Envol — Marbre blanc" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-envol-marbre-blanc.webp" alt="Envol — Marbre blanc" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Envol</span><span class="en">Flight</span><span class="ar">تحليق</span></h3>
           <p class="meta"><span class="fr">Marbre blanc &bull; 2020</span><span class="en">White Marble &bull; 2020</span><span class="ar">رخام أبيض &bull; 2020</span></p>
         </div>
@@ -1105,9 +1171,11 @@ section { padding: 140px 40px; }
 
       <!-- 5. Visage & Mouvement — Marbre gris -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-visage-mouvement-marbre.webp" alt="Visage et Mouvement — Marbre" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-visage-mouvement-marbre.webp" alt="Visage et Mouvement — Marbre" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Visage &amp; Mouvement</span><span class="en">Face &amp; Movement</span><span class="ar">وجه وحركة</span></h3>
           <p class="meta"><span class="fr">Marbre gris &bull; 2017</span><span class="en">Grey Marble &bull; 2017</span><span class="ar">رخام رمادي &bull; 2017</span></p>
         </div>
@@ -1115,9 +1183,11 @@ section { padding: 140px 40px; }
 
       <!-- 6. Sculpture monumentale — Pierre, Dubai -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-monumentale-dubai.webp" alt="Sculpture monumentale — Dubai" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-monumentale-dubai.webp" alt="Sculpture monumentale — Dubai" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Monumentale</span><span class="en">Monumental</span><span class="ar">ضخامة</span></h3>
           <p class="meta"><span class="fr">Pierre &bull; Dubai</span><span class="en">Stone &bull; Dubai</span><span class="ar">حجر &bull; دبي</span></p>
         </div>
@@ -1125,9 +1195,11 @@ section { padding: 140px 40px; }
 
       <!-- 7. Spirale — Marbre rose -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-spirale-marbre-rose.webp" alt="Spirale — Marbre rose" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-spirale-marbre-rose.webp" alt="Spirale — Marbre rose" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Spirale</span><span class="en">Spiral</span><span class="ar">لولب</span></h3>
           <p class="meta"><span class="fr">Marbre rose &bull; 2019</span><span class="en">Rose Marble &bull; 2019</span><span class="ar">رخام وردي &bull; 2019</span></p>
         </div>
@@ -1135,9 +1207,11 @@ section { padding: 140px 40px; }
 
       <!-- 8. Equilibrium — Marbre beige -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-equilibrium-marbre-beige.webp" alt="Equilibrium — Marbre beige" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-equilibrium-marbre-beige.webp" alt="Equilibrium — Marbre beige" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Equilibrium</span><span class="en">Equilibrium</span><span class="ar">توازن</span></h3>
           <p class="meta"><span class="fr">Marbre &bull; 2022</span><span class="en">Marble &bull; 2022</span><span class="ar">رخام &bull; 2022</span></p>
         </div>
@@ -1145,9 +1219,11 @@ section { padding: 140px 40px; }
 
       <!-- 9. Vague — Pierre monumentale, parc -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-vague-pierre-monumentale.webp" alt="Vague — Pierre" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-vague-pierre-monumentale.webp" alt="Vague — Pierre" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Vague</span><span class="en">Wave</span><span class="ar">موجة</span></h3>
           <p class="meta"><span class="fr">Pierre &bull; 2014</span><span class="en">Stone &bull; 2014</span><span class="ar">حجر &bull; 2014</span></p>
         </div>
@@ -1155,9 +1231,11 @@ section { padding: 140px 40px; }
 
       <!-- 10. Ambition — Vue exposition -->
       <div class="gallery-item reveal" data-category="mixte" onclick="openLightbox(this)">
-        <img src="sculpture-ambition-bronze-exposition.webp" alt="Ambition — Vue exposition" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-ambition-bronze-exposition.webp" alt="Ambition — Vue exposition" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Ambition &mdash; Exposition</span><span class="en">Ambition &mdash; Exhibition</span><span class="ar">طموح &mdash; معرض</span></h3>
           <p class="meta"><span class="fr">Bronze &amp; Pierre &bull; Vue d'ensemble</span><span class="en">Bronze &amp; Stone &bull; Full view</span><span class="ar">برونز وحجر &bull; منظر شامل</span></p>
         </div>
@@ -1165,9 +1243,11 @@ section { padding: 140px 40px; }
 
       <!-- 11. Torsion — Détail bois -->
       <div class="gallery-item reveal" data-category="bois" onclick="openLightbox(this)">
-        <img src="sculpture-torsion-bois-detail.webp" alt="Torsion — Détail bois" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-torsion-bois-detail.webp" alt="Torsion — Détail bois" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Torsion &mdash; D&eacute;tail</span><span class="en">Torsion &mdash; Detail</span><span class="ar">التواء &mdash; تفصيل</span></h3>
           <p class="meta"><span class="fr">Bois &bull; Gros plan</span><span class="en">Wood &bull; Close-up</span><span class="ar">خشب &bull; عن قرب</span></p>
         </div>
@@ -1175,9 +1255,11 @@ section { padding: 140px 40px; }
 
       <!-- 12. Couronne — Détail bronze -->
       <div class="gallery-item reveal" data-category="metal" onclick="openLightbox(this)">
-        <img src="sculpture-couronne-bronze-detail.webp" alt="Couronne — Détail bronze" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-couronne-bronze-detail.webp" alt="Couronne — Détail bronze" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Couronne &mdash; D&eacute;tail</span><span class="en">Crown &mdash; Detail</span><span class="ar">إكليل &mdash; تفصيل</span></h3>
           <p class="meta"><span class="fr">Bronze &bull; Patine verte</span><span class="en">Bronze &bull; Green patina</span><span class="ar">برونز &bull; زنجار أخضر</span></p>
         </div>
@@ -1185,9 +1267,11 @@ section { padding: 140px 40px; }
 
       <!-- 13. Monumentale — Dubai angle -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-monumentale-dubai-angle.webp" alt="Monumentale — Dubai angle" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-monumentale-dubai-angle.webp" alt="Monumentale — Dubai angle" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Monumentale &mdash; Duba&iuml;</span><span class="en">Monumental &mdash; Dubai</span><span class="ar">ضخامة &mdash; دبي</span></h3>
           <p class="meta"><span class="fr">Pierre &bull; Installation publique</span><span class="en">Stone &bull; Public installation</span><span class="ar">حجر &bull; تنصيب عام</span></p>
         </div>
@@ -1195,9 +1279,11 @@ section { padding: 140px 40px; }
 
       <!-- 14. Spirale — Détail marbre rose -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-spirale-marbre-rose-detail.webp" alt="Spirale — Détail marbre rose" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-spirale-marbre-rose-detail.webp" alt="Spirale — Détail marbre rose" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Spirale &mdash; D&eacute;tail</span><span class="en">Spiral &mdash; Detail</span><span class="ar">لولب &mdash; تفصيل</span></h3>
           <p class="meta"><span class="fr">Marbre rose &bull; Zellige</span><span class="en">Rose Marble &bull; Zellige</span><span class="ar">رخام وردي &bull; زليج</span></p>
         </div>
@@ -1205,9 +1291,11 @@ section { padding: 140px 40px; }
 
       <!-- 15. Vague — Autre angle -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-vague-pierre-angle.webp" alt="Vague — Pierre angle" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-vague-pierre-angle.webp" alt="Vague — Pierre angle" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Vague &mdash; Profil</span><span class="en">Wave &mdash; Profile</span><span class="ar">موجة &mdash; جانبي</span></h3>
           <p class="meta"><span class="fr">Pierre &bull; Vue lat&eacute;rale</span><span class="en">Stone &bull; Side view</span><span class="ar">حجر &bull; منظر جانبي</span></p>
         </div>
@@ -1215,9 +1303,11 @@ section { padding: 140px 40px; }
 
       <!-- 16. Equilibrium — Autre angle -->
       <div class="gallery-item reveal" data-category="pierre" onclick="openLightbox(this)">
-        <img src="sculpture-equilibrium-marbre-angle.webp" alt="Equilibrium — Marbre angle" loading="lazy" style="width:100%;display:block;">
-        <div class="gallery-item-overlay">
-          <div class="view-icon">+</div>
+        <div class="gallery-item-img-wrap">
+          <img src="sculpture-equilibrium-marbre-angle.webp" alt="Equilibrium — Marbre angle" loading="lazy" style="width:100%;display:block;">
+          <div class="gallery-item-overlay"><div class="view-icon">+</div></div>
+        </div>
+        <div class="gallery-item-info">
           <h3><span class="fr">Equilibrium &mdash; Profil</span><span class="en">Equilibrium &mdash; Profile</span><span class="ar">توازن &mdash; جانبي</span></h3>
           <p class="meta"><span class="fr">Marbre &bull; Exposition</span><span class="en">Marble &bull; Exhibition</span><span class="ar">رخام &bull; معرض</span></p>
         </div>
@@ -1364,7 +1454,7 @@ section { padding: 140px 40px; }
         </div>
       </div>
       <div class="commission-form reveal reveal-delay-1">
-        <form id="commissionForm" onsubmit="handleCommission(event)">
+        <form id="commissionForm" action="https://formsubmit.co/Elaadi_m@yahoo.fr" method="POST">
           <input type="text" name="name" id="comName" required>
           <input type="email" name="email" id="comEmail" required>
           <select name="type" id="comType" required>
@@ -1386,6 +1476,11 @@ section { padding: 140px 40px; }
             <option value="indecis" data-fr="Pas encore décidé" data-en="Not yet decided" data-ar="لم أقرر بعد">Pas encore d&eacute;cid&eacute;</option>
           </select>
           <textarea name="description" id="comDesc" rows="3"></textarea>
+          <input type="hidden" name="_subject" value="Demande de Commission — M'hammed El Aadi">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://mhammedelaadi.com/">
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_template" value="table">
           <button type="submit"><span class="fr">Envoyer la demande</span><span class="en">Send Request</span><span class="ar">إرسال الطلب</span></button>
         </form>
       </div>
@@ -1452,11 +1547,15 @@ section { padding: 140px 40px; }
       </div>
     </div>
     <div class="contact-form reveal reveal-delay-1">
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleSubmit(event)">
-        <input type="text" name="name" required>
-        <input type="email" name="email" required>
-        <textarea rows="4" name="message"></textarea>
+      <form id="contactForm" action="https://formsubmit.co/Elaadi_m@yahoo.fr" method="POST">
+        <input type="text" name="name" placeholder="Votre nom / Your name / الاسم" required>
+        <input type="email" name="email" placeholder="Votre email / Your email / البريد" required>
+        <textarea rows="4" name="message" placeholder="Votre message / Your message / رسالتك"></textarea>
         <input type="hidden" name="_subject" value="Portfolio Contact — M'hammed El Aadi">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://mhammedelaadi.com/">
+        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_template" value="table">
         <button type="submit"><span class="fr">Envoyer</span><span class="en">Send</span><span class="ar">إرسال</span></button>
       </form>
     </div>
@@ -1638,9 +1737,9 @@ function openLightbox(item) {
 
 function showLightboxItem(item) {
   const lang = document.body.getAttribute('data-lang');
-  const ov = item.querySelector('.gallery-item-overlay');
-  const titleEl = ov.querySelector('h3');
-  const metaEl = ov.querySelector('.meta');
+  const info = item.querySelector('.gallery-item-info');
+  const titleEl = info.querySelector('h3');
+  const metaEl = info.querySelector('.meta');
   const title = titleEl.querySelector('.' + lang)?.textContent || titleEl.textContent;
   const meta = metaEl.querySelector('.' + lang)?.textContent || metaEl.textContent;
   const imgEl = item.querySelector('img');
