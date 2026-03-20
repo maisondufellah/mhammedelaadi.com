@@ -463,6 +463,168 @@ section { padding: 140px 40px; }
 }
 .gallery-item:hover .gallery-item-overlay .view-icon { opacity: 1; transform: scale(1); }
 
+/* ====== COMMISSIONS / SUR COMMANDE ====== */
+.commissions { background: var(--bg-card); }
+.commissions-container { max-width: 1100px; margin: 0 auto; }
+.commissions-intro {
+  max-width: 700px; margin-bottom: 60px;
+}
+.commissions-intro p {
+  color: var(--white-dim); font-size: 0.95rem; line-height: 1.9;
+}
+
+.commission-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  margin-bottom: 70px;
+}
+.commission-step {
+  text-align: center; padding: 30px 20px;
+  border: 1px solid rgba(201,169,110,0.08);
+  position: relative;
+  transition: var(--transition);
+}
+.commission-step:hover {
+  border-color: rgba(201,169,110,0.2);
+  transform: translateY(-4px);
+}
+.commission-step-num {
+  font-family: var(--font-display); font-size: 2.5rem; font-weight: 300;
+  color: rgba(201,169,110,0.2); line-height: 1; margin-bottom: 14px;
+}
+.commission-step-icon {
+  font-size: 1.6rem; margin-bottom: 12px; opacity: 0.8;
+}
+.commission-step h4 {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 400;
+  color: var(--white); margin-bottom: 8px;
+}
+[data-lang="ar"] .commission-step h4 { font-family: var(--font-arabic); }
+.commission-step p {
+  font-size: 0.78rem; color: var(--white-dim); line-height: 1.6;
+}
+
+.commission-concepts {
+  margin-bottom: 70px;
+}
+.concepts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  margin-top: 30px;
+}
+.concept-card {
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(201,169,110,0.08);
+  transition: var(--transition);
+}
+.concept-card:hover {
+  border-color: rgba(201,169,110,0.25);
+}
+.concept-card img {
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block;
+  transition: transform 0.6s ease;
+}
+.concept-card:hover img { transform: scale(1.03); }
+.concept-card-info {
+  padding: 18px; background: var(--bg-elevated);
+}
+.concept-card-info h4 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 400;
+  color: var(--white); margin-bottom: 4px;
+}
+[data-lang="ar"] .concept-card-info h4 { font-family: var(--font-arabic); }
+.concept-card-info p {
+  font-size: 0.75rem; color: var(--gold); letter-spacing: 1px;
+}
+.concept-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(12,12,12,0.85); backdrop-filter: blur(8px);
+  padding: 4px 12px; font-size: 0.6rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-light);
+  border: 1px solid rgba(201,169,110,0.2); border-radius: 20px;
+}
+.concept-placeholder {
+  width: 100%; aspect-ratio: 4/5; background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+  border: 1px dashed rgba(201,169,110,0.15);
+}
+.concept-placeholder-icon {
+  font-size: 2.5rem; opacity: 0.3;
+}
+.concept-placeholder-text {
+  font-size: 0.7rem; color: var(--white-dim); opacity: 0.5;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+
+.commission-form-section {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: start;
+}
+.commission-form-info h3 {
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 400;
+  color: var(--white); margin-bottom: 20px;
+}
+[data-lang="ar"] .commission-form-info h3 { font-family: var(--font-arabic); }
+.commission-form-info p {
+  color: var(--white-dim); font-size: 0.9rem; line-height: 1.9; margin-bottom: 20px;
+}
+.commission-materials {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+}
+.material-tag {
+  padding: 6px 16px; border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 20px; font-size: 0.72rem; color: var(--white-dim);
+  letter-spacing: 1px;
+}
+
+.commission-form input,
+.commission-form textarea,
+.commission-form select {
+  width: 100%; padding: 14px 0; background: transparent; border: none;
+  border-bottom: 1px solid rgba(201,169,110,0.2); color: var(--white);
+  font-family: var(--font-body); font-size: 0.9rem; margin-bottom: 24px;
+  outline: none; transition: var(--transition);
+  -webkit-appearance: none; appearance: none;
+}
+.commission-form select {
+  cursor: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96E' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 24px;
+}
+.commission-form select option {
+  background: var(--bg-card); color: var(--white);
+}
+.commission-form input::placeholder,
+.commission-form textarea::placeholder { color: var(--white-dim); opacity: 0.5; }
+.commission-form input:focus,
+.commission-form textarea:focus,
+.commission-form select:focus { border-bottom-color: var(--gold); }
+.commission-form textarea { resize: vertical; min-height: 80px; }
+.commission-form button {
+  padding: 14px 40px; background: var(--gold); border: 1px solid var(--gold);
+  color: var(--bg); font-family: var(--font-body); font-size: 0.72rem;
+  letter-spacing: 3px; text-transform: uppercase; cursor: none; transition: var(--transition);
+  font-weight: 600;
+}
+.commission-form button:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+[data-lang="ar"] .commission-form input,
+[data-lang="ar"] .commission-form textarea,
+[data-lang="ar"] .commission-form select { font-family: var(--font-arabic); text-align: right; }
+[data-lang="ar"] .commission-form button { font-family: var(--font-arabic); font-size: 0.9rem; letter-spacing: 0; }
+[data-lang="ar"] .commission-form select { background-position: left 4px center; padding-left: 24px; padding-right: 0; }
+
+@media (max-width: 900px) {
+  .commission-steps { grid-template-columns: repeat(2, 1fr); }
+  .concepts-grid { grid-template-columns: 1fr 1fr; }
+  .commission-form-section { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 650px) {
+  .commission-steps { grid-template-columns: 1fr; }
+  .concepts-grid { grid-template-columns: 1fr; }
+}
+
 /* ====== PARCOURS / TIMELINE ====== */
 .parcours { background: var(--bg-card); }
 .parcours-container { max-width: 900px; margin: 0 auto; }
@@ -705,6 +867,7 @@ section { padding: 140px 40px; }
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" onclick="closeMenu()"><span class="fr">Biographie</span><span class="en">Biography</span><span class="ar">السيرة</span></a></li>
     <li><a href="#gallery" onclick="closeMenu()"><span class="fr">Oeuvres</span><span class="en">Works</span><span class="ar">الأعمال</span></a></li>
+    <li><a href="#commissions" onclick="closeMenu()"><span class="fr">Sur Commande</span><span class="en">Commissions</span><span class="ar">حسب الطلب</span></a></li>
     <li><a href="#parcours" onclick="closeMenu()"><span class="fr">Parcours</span><span class="en">Career</span><span class="ar">المسار</span></a></li>
     <li><a href="#contact" onclick="closeMenu()"><span class="fr">Contact</span><span class="en">Contact</span><span class="ar">اتصل</span></a></li>
   </ul>
@@ -964,6 +1127,145 @@ section { padding: 140px 40px; }
   </div>
 </section>
 
+<!-- Commissions / Sur Commande -->
+<section class="commissions" id="commissions">
+  <div class="commissions-container">
+    <div class="reveal">
+      <p class="section-label"><span class="fr">Sur Commande</span><span class="en">Commissions</span><span class="ar">أعمال حسب الطلب</span></p>
+      <h2 class="section-title"><span class="fr">Votre sculpture sur mesure</span><span class="en">Your Custom Sculpture</span><span class="ar">منحوتتك حسب الطلب</span></h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="commissions-intro reveal">
+      <p class="fr">M'hammed El Aadi r&eacute;alise des &oelig;uvres sur commande pour collectionneurs, espaces publics, h&ocirc;tels de luxe et r&eacute;sidences priv&eacute;es. Chaque pi&egrave;ce est unique, cr&eacute;&eacute;e en dialogue avec le commanditaire.</p>
+      <p class="en">M'hammed El Aadi creates commissioned works for collectors, public spaces, luxury hotels and private residences. Each piece is unique, created in dialogue with the client.</p>
+      <p class="ar">ينجز محمد العادي أعمالاً حسب الطلب لهواة الجمع والفضاءات العامة والفنادق الفاخرة والمنازل الخاصة. كل قطعة فريدة، تُبتكر بحوار مع طالب العمل.</p>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="commission-steps">
+      <div class="commission-step reveal reveal-delay-1">
+        <div class="commission-step-num">01</div>
+        <div class="commission-step-icon">&#128172;</div>
+        <h4><span class="fr">Consultation</span><span class="en">Consultation</span><span class="ar">استشارة</span></h4>
+        <p><span class="fr">&Eacute;change sur votre vision, l'espace et le budget</span><span class="en">Discussion about your vision, space and budget</span><span class="ar">تبادل حول رؤيتك والمساحة والميزانية</span></p>
+      </div>
+      <div class="commission-step reveal reveal-delay-2">
+        <div class="commission-step-num">02</div>
+        <div class="commission-step-icon">&#9998;</div>
+        <h4><span class="fr">Esquisse</span><span class="en">Sketch</span><span class="ar">رسم أولي</span></h4>
+        <p><span class="fr">Croquis et maquette pour validation avant r&eacute;alisation</span><span class="en">Sketches and model for approval before creation</span><span class="ar">رسومات ومجسّم للمصادقة قبل الإنجاز</span></p>
+      </div>
+      <div class="commission-step reveal reveal-delay-3">
+        <div class="commission-step-num">03</div>
+        <div class="commission-step-icon">&#9775;</div>
+        <h4><span class="fr">R&eacute;alisation</span><span class="en">Creation</span><span class="ar">الإنجاز</span></h4>
+        <p><span class="fr">Sculpture dans le mat&eacute;riau choisi avec suivi photo</span><span class="en">Sculpting in chosen material with photo updates</span><span class="ar">نحت بالمادة المختارة مع متابعة بالصور</span></p>
+      </div>
+      <div class="commission-step reveal reveal-delay-4">
+        <div class="commission-step-num">04</div>
+        <div class="commission-step-icon">&#127968;</div>
+        <h4><span class="fr">Livraison</span><span class="en">Delivery</span><span class="ar">التسليم</span></h4>
+        <p><span class="fr">Installation et mise en place dans votre espace</span><span class="en">Installation and placement in your space</span><span class="ar">تنصيب ووضع في فضائك</span></p>
+      </div>
+    </div>
+
+    <!-- Concept Examples -->
+    <div class="commission-concepts reveal">
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);font-weight:400;margin-bottom:8px;">
+        <span class="fr">Exemples de r&eacute;alisations possibles</span><span class="en">Examples of Possible Creations</span><span class="ar" style="font-family:var(--font-arabic);">أمثلة على إنجازات ممكنة</span>
+      </h3>
+      <p style="font-size:0.78rem;color:var(--white-dim);margin-bottom:24px;">
+        <span class="fr">Illustrations conceptuelles — chaque commande est unique et personnalis&eacute;e</span>
+        <span class="en">Conceptual illustrations — each commission is unique and personalized</span>
+        <span class="ar">رسوم توضيحية مفاهيمية — كل طلب فريد ومخصص</span>
+      </p>
+      <div class="concepts-grid">
+        <div class="concept-card reveal">
+          <div class="concept-placeholder">
+            <div class="concept-placeholder-icon">&#9881;</div>
+            <div class="concept-placeholder-text">
+              <span class="fr">Sculpture d'int&eacute;rieur</span><span class="en">Indoor Sculpture</span><span class="ar">منحوتة داخلية</span>
+            </div>
+          </div>
+          <div class="concept-card-info">
+            <h4><span class="fr">Sculpture d'int&eacute;rieur</span><span class="en">Indoor Sculpture</span><span class="ar">منحوتة داخلية</span></h4>
+            <p><span class="fr">Bois ou Marbre &bull; 40-80cm</span><span class="en">Wood or Marble &bull; 40-80cm</span><span class="ar">خشب أو رخام &bull; 40-80سم</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal reveal-delay-1">
+          <div class="concept-placeholder">
+            <div class="concept-placeholder-icon">&#127961;</div>
+            <div class="concept-placeholder-text">
+              <span class="fr">Sculpture monumentale</span><span class="en">Monumental Sculpture</span><span class="ar">منحوتة ضخمة</span>
+            </div>
+          </div>
+          <div class="concept-card-info">
+            <h4><span class="fr">Sculpture monumentale</span><span class="en">Monumental Sculpture</span><span class="ar">منحوتة ضخمة</span></h4>
+            <p><span class="fr">Pierre ou Bronze &bull; 1-5m</span><span class="en">Stone or Bronze &bull; 1-5m</span><span class="ar">حجر أو برونز &bull; 1-5م</span></p>
+          </div>
+        </div>
+        <div class="concept-card reveal reveal-delay-2">
+          <div class="concept-placeholder">
+            <div class="concept-placeholder-icon">&#127912;</div>
+            <div class="concept-placeholder-text">
+              <span class="fr">&OElig;uvre de collection</span><span class="en">Collector Piece</span><span class="ar">قطعة جمع</span>
+            </div>
+          </div>
+          <div class="concept-card-info">
+            <h4><span class="fr">&OElig;uvre de collection</span><span class="en">Collector Piece</span><span class="ar">قطعة جمع</span></h4>
+            <p><span class="fr">Mixte &bull; &Eacute;dition limit&eacute;e</span><span class="en">Mixed Media &bull; Limited Edition</span><span class="ar">مواد مختلطة &bull; إصدار محدود</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commission Form -->
+    <div class="commission-form-section">
+      <div class="commission-form-info reveal">
+        <h3><span class="fr">Demandez votre &oelig;uvre</span><span class="en">Request Your Piece</span><span class="ar">اطلب عملك الفني</span></h3>
+        <p class="fr">D&eacute;crivez votre projet et l'artiste vous contactera pour discuter des possibilit&eacute;s. Chaque &oelig;uvre est r&eacute;alis&eacute;e &agrave; la main dans l'atelier d'El Jadida.</p>
+        <p class="en">Describe your project and the artist will contact you to discuss possibilities. Each work is handcrafted in the El Jadida studio.</p>
+        <p class="ar">صِف مشروعك وسيتواصل معك الفنان لمناقشة الإمكانيات. كل عمل يُصنع يدوياً في محترف الجديدة.</p>
+        <div class="commission-materials">
+          <span class="material-tag"><span class="fr">Bois</span><span class="en">Wood</span><span class="ar">خشب</span></span>
+          <span class="material-tag"><span class="fr">M&eacute;tal</span><span class="en">Metal</span><span class="ar">معدن</span></span>
+          <span class="material-tag"><span class="fr">Pierre</span><span class="en">Stone</span><span class="ar">حجر</span></span>
+          <span class="material-tag"><span class="fr">Marbre</span><span class="en">Marble</span><span class="ar">رخام</span></span>
+          <span class="material-tag"><span class="fr">Bronze</span><span class="en">Bronze</span><span class="ar">برونز</span></span>
+          <span class="material-tag"><span class="fr">Mixte</span><span class="en">Mixed</span><span class="ar">مختلط</span></span>
+        </div>
+      </div>
+      <div class="commission-form reveal reveal-delay-1">
+        <form id="commissionForm" onsubmit="handleCommission(event)">
+          <input type="text" name="name" id="comName" required>
+          <input type="email" name="email" id="comEmail" required>
+          <select name="type" id="comType" required>
+            <option value="" disabled selected></option>
+            <option value="interieur" data-fr="Sculpture d'intérieur" data-en="Indoor Sculpture" data-ar="منحوتة داخلية">Sculpture d'int&eacute;rieur</option>
+            <option value="exterieur" data-fr="Sculpture d'extérieur" data-en="Outdoor Sculpture" data-ar="منحوتة خارجية">Sculpture d'ext&eacute;rieur</option>
+            <option value="monumentale" data-fr="Sculpture monumentale" data-en="Monumental Sculpture" data-ar="منحوتة ضخمة">Sculpture monumentale</option>
+            <option value="collection" data-fr="Pièce de collection" data-en="Collector Piece" data-ar="قطعة جمع">Pi&egrave;ce de collection</option>
+            <option value="autre" data-fr="Autre" data-en="Other" data-ar="أخرى">Autre</option>
+          </select>
+          <select name="material" id="comMaterial">
+            <option value="" disabled selected></option>
+            <option value="bois">Bois / Wood</option>
+            <option value="metal">M&eacute;tal / Metal</option>
+            <option value="pierre">Pierre / Stone</option>
+            <option value="marbre">Marbre / Marble</option>
+            <option value="bronze">Bronze</option>
+            <option value="mixte">Mixte / Mixed</option>
+            <option value="indecis" data-fr="Pas encore décidé" data-en="Not yet decided" data-ar="لم أقرر بعد">Pas encore d&eacute;cid&eacute;</option>
+          </select>
+          <textarea name="description" id="comDesc" rows="3"></textarea>
+          <button type="submit"><span class="fr">Envoyer la demande</span><span class="en">Send Request</span><span class="ar">إرسال الطلب</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Parcours -->
 <section class="parcours" id="parcours">
   <div class="parcours-container">
@@ -1055,6 +1357,7 @@ section { padding: 140px 40px; }
         <li><a href="#about"><span class="fr">Biographie</span><span class="en">Biography</span><span class="ar">السيرة</span></a></li>
         <li><a href="#statement"><span class="fr">D&eacute;marche</span><span class="en">Statement</span><span class="ar">كلمة الفنان</span></a></li>
         <li><a href="#gallery"><span class="fr">Oeuvres</span><span class="en">Works</span><span class="ar">الأعمال</span></a></li>
+        <li><a href="#commissions"><span class="fr">Sur Commande</span><span class="en">Commissions</span><span class="ar">حسب الطلب</span></a></li>
         <li><a href="#parcours"><span class="fr">Parcours</span><span class="en">Career</span><span class="ar">المسار</span></a></li>
         <li><a href="#contact"><span class="fr">Contact</span><span class="en">Contact</span><span class="ar">اتصل</span></a></li>
       </ul>
@@ -1142,6 +1445,7 @@ function setLang(lang) {
   document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
   document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
   updatePlaceholders(lang);
+  updateCommissionPlaceholders(lang);
 }
 function updatePlaceholders(lang) {
   const form = document.getElementById('contactForm');
@@ -1157,6 +1461,7 @@ function updatePlaceholders(lang) {
   }
 }
 updatePlaceholders('fr');
+updateCommissionPlaceholders('fr');
 
 // ===== NAVBAR =====
 window.addEventListener('scroll', () => {
@@ -1255,6 +1560,59 @@ function handleSubmit(e) {
     alert(msgs[lang] || msgs.fr);
     form.reset();
   }
+}
+
+// ===== COMMISSION FORM =====
+function updateCommissionPlaceholders(lang) {
+  const m = {
+    fr: { name:'Votre nom', email:'Votre email', type:'Type de sculpture', material:'Matériau préféré', desc:'Décrivez votre projet (dimensions, espace, idée...)' },
+    en: { name:'Your name', email:'Your email', type:'Type of sculpture', material:'Preferred material', desc:'Describe your project (dimensions, space, idea...)' },
+    ar: { name:'الاسم', email:'البريد الإلكتروني', type:'نوع المنحوتة', material:'المادة المفضلة', desc:'صِف مشروعك (الأبعاد، الفضاء، الفكرة...)' }
+  };
+  const p = m[lang] || m.fr;
+  const el = (id) => document.getElementById(id);
+  if (el('comName')) el('comName').placeholder = p.name;
+  if (el('comEmail')) el('comEmail').placeholder = p.email;
+  if (el('comDesc')) el('comDesc').placeholder = p.desc;
+  // Update select options text
+  const typeSelect = el('comType');
+  if (typeSelect) {
+    typeSelect.options[0].textContent = p.type;
+    for (let i = 1; i < typeSelect.options.length; i++) {
+      const opt = typeSelect.options[i];
+      const text = opt.getAttribute('data-' + lang);
+      if (text) opt.textContent = text;
+    }
+  }
+  const matSelect = el('comMaterial');
+  if (matSelect) {
+    matSelect.options[0].textContent = p.material;
+    for (let i = 1; i < matSelect.options.length; i++) {
+      const opt = matSelect.options[i];
+      const text = opt.getAttribute('data-' + lang);
+      if (text) opt.textContent = text;
+    }
+  }
+}
+
+function handleCommission(e) {
+  e.preventDefault();
+  const lang = document.body.getAttribute('data-lang');
+  const form = e.target;
+  const name = form.name.value;
+  const email = form.email.value;
+  const type = form.type.value;
+  const material = form.material.value;
+  const desc = form.description.value;
+  // Build mailto
+  const subject = encodeURIComponent('Commission Sculpture — ' + name);
+  const body = encodeURIComponent(
+    'Nom: ' + name + '\nEmail: ' + email + '\nType: ' + type + '\nMatériau: ' + material + '\n\nDescription:\n' + desc
+  );
+  window.open('mailto:Elaadi_m@yahoo.fr?subject=' + subject + '&body=' + body, '_blank');
+  const msgs = { fr: 'Merci ! Votre demande a été préparée.', en: 'Thank you! Your request has been prepared.', ar: 'شكراً! تم تحضير طلبك.' };
+  alert(msgs[lang] || msgs.fr);
+  form.reset();
 }
 
 // ===== PRELOADER =====
