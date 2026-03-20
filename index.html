@@ -316,6 +316,24 @@ section { padding: 140px 40px; }
 .about-image .img-placeholder::before {
   content: ''; position: absolute; inset: 12px; border: 1px solid rgba(201,169,110,0.08);
 }
+.about-portraits {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.about-portraits img {
+  width: 100%; border-radius: 4px; object-fit: cover;
+  border: 1px solid rgba(201,169,110,0.15);
+  transition: var(--transition);
+}
+.about-portraits img:first-child {
+  aspect-ratio: 1/1; object-position: center top;
+}
+.about-portraits img:last-child {
+  aspect-ratio: 4/3; object-position: center;
+}
+.about-portraits img:hover {
+  border-color: var(--gold);
+  transform: scale(1.02);
+}
 .about-text p { color: var(--white-dim); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.9; }
 .about-stats {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
@@ -737,7 +755,10 @@ section { padding: 140px 40px; }
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-image reveal">
-      <div class="img-placeholder">PORTRAIT</div>
+      <div class="about-portraits">
+        <img src="portrait-formal.jpg" alt="M'hammed El Aadi — Portrait" loading="lazy">
+        <img src="portrait-atelier.jpg" alt="M'hammed El Aadi — En plein air" loading="lazy">
+      </div>
     </div>
     <div class="about-text reveal reveal-delay-1">
       <p class="section-label"><span class="fr">Biographie</span><span class="en">Biography</span><span class="ar">السيرة الذاتية</span></p>
